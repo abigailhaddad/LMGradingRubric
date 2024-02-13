@@ -1,0 +1,33 @@
+Instructions,True Label,Model Label
+"Begin by rinsing the pipette with distilled water to remove any residual chemicals.
+   Carefully disassemble the pipette into its component parts.
+    Soak and gently scrub the parts with a mild detergent solution to cleanse thoroughly.
+    Rinse all parts several times with distilled water to ensure all detergent is removed.
+    Allow the parts to air dry completely in an upright position to prevent moisture from being trapped.
+    Once dry, reassemble the pipette, ensuring all parts fit together correctly.
+    Wear gloves throughout the cleaning process to protect your hands, and goggles if there's a risk of splashing.
+    Regularly check the pipette for calibration accuracy and signs of wear or damage",PASS,PASS
+"Rinse the pipette with distilled water to eliminate initial contaminants.
+    Disassemble the pipette if the design permits, keeping track of all pieces.
+    Clean each part with a solution specifically designed for pipettes or a non-abrasive detergent.
+    Perform a thorough rinse of all components with distilled water to remove the cleaning solution.
+    Dry the components using a clean, lint-free cloth or let them air dry in an upright position.
+    Reassemble the pipette, ensuring it functions smoothly.
+    Always use gloves and eye protection while cleaning to avoid direct contact with chemicals.
+    Conduct maintenance checks for calibration and inspect for damage regularly",PASS,PASS
+"Start by rinsing the pipette using distilled water to wash away leftover substances.
+    Disassemble the pipette carefully to access all internal surfaces.
+    Apply a gentle detergent or pipette cleaner to all parts, scrubbing softly to avoid damage.
+    Rinse thoroughly with distilled water until all traces of the cleaner are gone.
+    Reassemble the pipette after ensuring all parts are clean but without specifying drying.
+    Utilize protective gloves to safeguard your hands during the cleaning.
+    Regularly perform maintenance checks to ensure the pipette's accuracy and condition",FAIL,FAIL
+"Rinse initially with distilled water to remove surface residues.
+    Apply a mild detergent to clean the pipette internally, avoiding harsh scrubbing.
+    After cleaning, rinse with distilled water to clear out any soap remnants.
+    Dry the pipette externally with a soft cloth.",FAIL,FAIL
+"Initial rinsing with distilled water is performed to clear away visible contaminants.
+    The pipette is disassembled for thorough cleaning.
+    All parts are rinsed post-cleaning with distilled water to ensure no detergent is left.
+    The components are air dried in an upright position or with a gentle airflow.
+    The pipette is reassembled",FAIL,FAIL

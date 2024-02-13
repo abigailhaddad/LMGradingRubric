@@ -1,0 +1,3 @@
+﻿ClassName,ClassDocString,Label
+GradingPipetteCleaningInstructions,"Includes instructions for all of the following tasks:  using distilled water, use of mild detergent or cleaning solution, rinsing with distilled water, drying, reassembly, wearing gloves and goggles, checking for calibration and wear.",PASS
+GradingPipetteCleaningInstructions,"Leaves out one or more of the following tasks:: using distilled water, use of mild detergent or cleaning solution, rinsing with distilled water, drying, reassembly, wearing gloves and goggles, checking for calibration and wear",FAIL
