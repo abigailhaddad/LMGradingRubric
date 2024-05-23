@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "status": "error",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "QnL64roQJQT4LwZqNW3JJ4",
+    "run_id": "YJrii5Vfz2PTSZQjy9gqFM",
+    "created": "2024-05-23T12:53:19",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "ea8ea48"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "stats": {
+    "started_at": "2024-05-23T12:53:19",
+    "completed_at": "2024-05-23T12:53:20",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 27,
+        "output_tokens": 75,
+        "total_tokens": 102
+      }
+    }
+  },
+  "error": {
+    "message": "TypeError('fact_comparator_scorer() takes 1 positional argument but 2 were given')",
+    "traceback": "Traceback (most recent call last):\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\_eval\\task.py\", line 296, in run\n    scores = await asyncio.gather(*tasks)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\", line 339, in __wakeup\n    future.result()\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\", line 267, in __step\n    result = coro.send(None)\n             ^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\_eval\\task.py\", line 428, in run_eval_task\n    result = await scorer(state, Target(sample.target)) if scorer else None\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Temp\\ipykernel_28572\\2908509250.py\", line 38, in score\n    item = await fact_comparator_scorer(task_state, target)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\scorer\\_scorer.py\", line 138, in scorer_wrapper\n    scorer = scorer_type(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nTypeError: fact_comparator_scorer() takes 1 positional argument but 2 were given\n",
+    "traceback_ansi": "\u001b[31m+-\u001b[0m\u001b[31m------------------------------\u001b[0m\u001b[31m \u001b[0m\u001b[1;31mTraceback \u001b[0m\u001b[1;2;31m(most recent call last)\u001b[0m\u001b[31m \u001b[0m\u001b[31m-------------------------------\u001b[0m\u001b[31m-+\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\_eval\\task.py\u001b[0m:\u001b[94m296\u001b[0m in \u001b[92mrun\u001b[0m                                                                       \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\u001b[0m:\u001b[94m339\u001b[0m in \u001b[92m__wakeup\u001b[0m      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\u001b[0m:\u001b[94m267\u001b[0m in \u001b[92m__step\u001b[0m        \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\_eval\\task.py\u001b[0m:\u001b[94m428\u001b[0m in \u001b[92mrun_eval_task\u001b[0m                                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m in \u001b[92mscore\u001b[0m:\u001b[94m38\u001b[0m                                                                                      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m35 \u001b[0m                                                                                            \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m36 \u001b[0m    \u001b[2m# Create an instance of the scorer\u001b[0m                                                      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m37 \u001b[0m    model = InspectChatModel()                                                              \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[31m❱ \u001b[0m38     item = \u001b[94mawait\u001b[0m fact_comparator_scorer(task_state, target)                                 \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m39 \u001b[0m    scorer_value = item.value                                                               \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m40 \u001b[0m    groundedness = scorer_value[\u001b[33m'\u001b[0m\u001b[33mgroundedness\u001b[0m\u001b[33m'\u001b[0m]                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m41 \u001b[0m    thoroughness = scorer_value[\u001b[33m'\u001b[0m\u001b[33mthoroughness\u001b[0m\u001b[33m'\u001b[0m]                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+-\u001b[0m\u001b[33m---------------------------------\u001b[0m\u001b[33m locals \u001b[0m\u001b[33m----------------------------------\u001b[0m\u001b[33m-+\u001b[0m                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m  model = \u001b[1;35mInspectChatModel\u001b[0m\u001b[1m(\u001b[0m\u001b[1m)\u001b[0m                                                 \u001b[33m|\u001b[0m                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m  state = \u001b[1m<\u001b[0m\u001b[1;95minspect_ai.solver._solver.TaskState\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F79F9EA10\u001b[0m\u001b[1m>\u001b[0m \u001b[33m|\u001b[0m                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m target = \u001b[1m<\u001b[0m\u001b[1;95minspect_ai.scorer._scorer.Target\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F79B65C10\u001b[0m\u001b[1m>\u001b[0m    \u001b[33m|\u001b[0m                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+-----------------------------------------------------------------------------+\u001b[0m                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\scorer\\_scorer.py\u001b[0m:\u001b[94m138\u001b[0m in \u001b[92mscorer_wrapper\u001b[0m                                                        \u001b[31m|\u001b[0m\n\u001b[31m+--------------------------------------------------------------------------------------------------+\u001b[0m\n\u001b[1;91mTypeError: \u001b[0m\u001b[1;35mfact_comparator_scorer\u001b[0m\u001b[1m(\u001b[0m\u001b[1m)\u001b[0m takes \u001b[1;36m1\u001b[0m positional argument but \u001b[1;36m2\u001b[0m were given\n"
+  },
+  "logging": []
+}

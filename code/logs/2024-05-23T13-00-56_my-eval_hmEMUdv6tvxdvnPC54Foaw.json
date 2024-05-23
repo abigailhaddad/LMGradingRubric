@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "status": "error",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "hmEMUdv6tvxdvnPC54Foaw",
+    "run_id": "SetHqV4Dv5kbeqGFKt2p9u",
+    "created": "2024-05-23T13:00:56",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "ea8ea48"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "stats": {
+    "started_at": "2024-05-23T13:00:56",
+    "completed_at": "2024-05-23T13:00:58",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 31,
+        "output_tokens": 75,
+        "total_tokens": 106
+      }
+    }
+  },
+  "error": {
+    "message": "AttributeError(\"'Model' object has no attribute '_agenerate'\")",
+    "traceback": "Traceback (most recent call last):\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\_eval\\task.py\", line 296, in run\n    scores = await asyncio.gather(*tasks)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\", line 339, in __wakeup\n    future.result()\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\", line 267, in __step\n    result = coro.send(None)\n             ^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\_eval\\task.py\", line 428, in run_eval_task\n    result = await scorer(state, Target(sample.target)) if scorer else None\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Temp\\ipykernel_28572\\129216810.py\", line 62, in score\n    result = await fact_comparator.process_data(context, target_text)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Temp\\ipykernel_28572\\2662105523.py\", line 17, in process_data\n    context_list = (await self.model._agenerate([HumanMessage(content=self._parse_prompt().format(text=context))])).generations[0].text\n                          ^^^^^^^^^^^^^^^^^^^^^\n\nAttributeError: 'Model' object has no attribute '_agenerate'\n",
+    "traceback_ansi": "\u001b[31m+-\u001b[0m\u001b[31m------------------------------\u001b[0m\u001b[31m \u001b[0m\u001b[1;31mTraceback \u001b[0m\u001b[1;2;31m(most recent call last)\u001b[0m\u001b[31m \u001b[0m\u001b[31m-------------------------------\u001b[0m\u001b[31m-+\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\_eval\\task.py\u001b[0m:\u001b[94m296\u001b[0m in \u001b[92mrun\u001b[0m                                                                       \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\u001b[0m:\u001b[94m339\u001b[0m in \u001b[92m__wakeup\u001b[0m      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\u001b[0m:\u001b[94m267\u001b[0m in \u001b[92m__step\u001b[0m        \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\_eval\\task.py\u001b[0m:\u001b[94m428\u001b[0m in \u001b[92mrun_eval_task\u001b[0m                                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m in \u001b[92mscore\u001b[0m:\u001b[94m62\u001b[0m                                                                                      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 59 \u001b[0m    \u001b[94masync\u001b[0m \u001b[94mdef\u001b[0m \u001b[92mscore\u001b[0m(state: TaskState, target: Target) -> Score:                            \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 60 \u001b[0m        context = state.input                                                              \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 61 \u001b[0m        target_text = target.target                                                        \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[31m❱ \u001b[0m 62         result = \u001b[94mawait\u001b[0m fact_comparator.process_data(context, target_text)                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 63 \u001b[0m        metrics = fact_comparator.calculate_metrics(result[\u001b[33m\"\u001b[0m\u001b[33mcomparison_result\u001b[0m\u001b[33m\"\u001b[0m])           \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 64 \u001b[0m        scorer_value = {                                                                   \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 65 \u001b[0m            \u001b[33m\"\u001b[0m\u001b[33mgroundedness\u001b[0m\u001b[33m\"\u001b[0m: metrics[\u001b[33m\"\u001b[0m\u001b[33mgroundedness\u001b[0m\u001b[33m\"\u001b[0m],                                       \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+-\u001b[0m\u001b[33m--------------------------------------\u001b[0m\u001b[33m locals \u001b[0m\u001b[33m--------------------------------------\u001b[0m\u001b[33m-+\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m         context = \u001b[33m'The fox is brown. The dog is white.'\u001b[0m                              \u001b[33m|\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m fact_comparator = \u001b[1m<\u001b[0m\u001b[1;95m__main__.FactComparator\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F791A82D0\u001b[0m\u001b[1m>\u001b[0m             \u001b[33m|\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m           state = \u001b[1m<\u001b[0m\u001b[1;95minspect_ai.solver._solver.TaskState\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F7763AC90\u001b[0m\u001b[1m>\u001b[0m \u001b[33m|\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m          target = \u001b[1m<\u001b[0m\u001b[1;95minspect_ai.scorer._scorer.Target\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F79A83650\u001b[0m\u001b[1m>\u001b[0m    \u001b[33m|\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m     target_text = \u001b[1m[\u001b[0m\u001b[33m'The fox is brown.'\u001b[0m\u001b[1m]\u001b[0m                                              \u001b[33m|\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+--------------------------------------------------------------------------------------+\u001b[0m         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m in \u001b[92mprocess_data\u001b[0m:\u001b[94m17\u001b[0m                                                                               \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 14 \u001b[0m        \u001b[94mreturn\u001b[0m \u001b[94mawait\u001b[0m \u001b[96mself\u001b[0m.process_data(context, answer)                                    \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 15 \u001b[0m                                                                                           \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 16 \u001b[0m    \u001b[94masync\u001b[0m \u001b[94mdef\u001b[0m \u001b[92mprocess_data\u001b[0m(\u001b[96mself\u001b[0m, context, answer):                                         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[31m❱ \u001b[0m 17         context_list = (\u001b[94mawait\u001b[0m \u001b[96mself\u001b[0m.model._agenerate([HumanMessage(content=\u001b[96mself\u001b[0m._parse_pr   \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 18 \u001b[0m        answer_list = (\u001b[94mawait\u001b[0m \u001b[96mself\u001b[0m.model._agenerate([HumanMessage(content=\u001b[96mself\u001b[0m._parse_pro   \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 19 \u001b[0m                                                                                           \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m 20 \u001b[0m        comparison_result = \u001b[96mself\u001b[0m.parser.parse((\u001b[94mawait\u001b[0m \u001b[96mself\u001b[0m.model._agenerate([HumanMessage   \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+-\u001b[0m\u001b[33m----------------------------\u001b[0m\u001b[33m locals \u001b[0m\u001b[33m----------------------------\u001b[0m\u001b[33m-+\u001b[0m                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m  answer = \u001b[1m[\u001b[0m\u001b[33m'The fox is brown.'\u001b[0m\u001b[1m]\u001b[0m                                  \u001b[33m|\u001b[0m                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m context = \u001b[33m'The fox is brown. The dog is white.'\u001b[0m                  \u001b[33m|\u001b[0m                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m    self = \u001b[1m<\u001b[0m\u001b[1;95m__main__.FactComparator\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F791A82D0\u001b[0m\u001b[1m>\u001b[0m \u001b[33m|\u001b[0m                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+------------------------------------------------------------------+\u001b[0m                             \u001b[31m|\u001b[0m\n\u001b[31m+--------------------------------------------------------------------------------------------------+\u001b[0m\n\u001b[1;91mAttributeError: \u001b[0m\u001b[32m'Model'\u001b[0m object has no attribute \u001b[32m'_agenerate'\u001b[0m\n"
+  },
+  "logging": []
+}

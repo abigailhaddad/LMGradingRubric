@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "status": "error",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "8jdD4kxguc8bH84BqjnWSC",
+    "run_id": "FakpBfjXRszMo2Pader6Ma",
+    "created": "2024-05-23T12:51:32",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "ea8ea48"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "stats": {
+    "started_at": "2024-05-23T12:51:32",
+    "completed_at": "2024-05-23T12:51:33",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 31,
+        "output_tokens": 57,
+        "total_tokens": 88
+      }
+    }
+  },
+  "error": {
+    "message": "AttributeError(\"'function' object has no attribute 'value'\")",
+    "traceback": "Traceback (most recent call last):\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\_eval\\task.py\", line 296, in run\n    scores = await asyncio.gather(*tasks)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\", line 339, in __wakeup\n    future.result()\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\", line 267, in __step\n    result = coro.send(None)\n             ^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_ai\\_eval\\task.py\", line 428, in run_eval_task\n    result = await scorer(state, Target(sample.target)) if scorer else None\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\abiga\\AppData\\Local\\Temp\\ipykernel_28572\\3034039974.py\", line 39, in score\n    scorer_value = score.value\n                   ^^^^^^^^^^^\n\nAttributeError: 'function' object has no attribute 'value'\n",
+    "traceback_ansi": "\u001b[31m+-\u001b[0m\u001b[31m------------------------------\u001b[0m\u001b[31m \u001b[0m\u001b[1;31mTraceback \u001b[0m\u001b[1;2;31m(most recent call last)\u001b[0m\u001b[31m \u001b[0m\u001b[31m-------------------------------\u001b[0m\u001b[31m-+\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\_eval\\task.py\u001b[0m:\u001b[94m296\u001b[0m in \u001b[92mrun\u001b[0m                                                                       \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\u001b[0m:\u001b[94m339\u001b[0m in \u001b[92m__wakeup\u001b[0m      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\tasks.py\u001b[0m:\u001b[94m267\u001b[0m in \u001b[92m__step\u001b[0m        \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mC:\\Users\\abiga\\OneDrive\\Documents\\PythonScripts\\LLMGradingRubric\\env\\Lib\\site-packages\\inspect_a\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33mi\\_eval\\task.py\u001b[0m:\u001b[94m428\u001b[0m in \u001b[92mrun_eval_task\u001b[0m                                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m in \u001b[92mscore\u001b[0m:\u001b[94m39\u001b[0m                                                                                      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m36 \u001b[0m    \u001b[2m# Create an instance of the scorer\u001b[0m                                                      \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m37 \u001b[0m    model = InspectChatModel()                                                              \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m38 \u001b[0m    fact_comparator_scorer = FactComparatorScorer(model)                                    \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[31m❱ \u001b[0m39     scorer_value = score.value                                                              \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m40 \u001b[0m    groundedness = scorer_value[\u001b[33m'\u001b[0m\u001b[33mgroundedness\u001b[0m\u001b[33m'\u001b[0m]                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m41 \u001b[0m    thoroughness = scorer_value[\u001b[33m'\u001b[0m\u001b[33mthoroughness\u001b[0m\u001b[33m'\u001b[0m]                                             \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m   \u001b[2m42 \u001b[0m    explanation = score.explanation                                                         \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m                                                                                                  \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+-\u001b[0m\u001b[33m------------------------------------------\u001b[0m\u001b[33m locals \u001b[0m\u001b[33m------------------------------------------\u001b[0m\u001b[33m-+\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m fact_comparator_scorer = \u001b[1m<\u001b[0m\u001b[1;95m__main__.FactComparatorScorer\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F777F0050\u001b[0m\u001b[1m>\u001b[0m        \u001b[33m|\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m                  model = \u001b[1;35mInspectChatModel\u001b[0m\u001b[1m(\u001b[0m\u001b[1m)\u001b[0m                                                  \u001b[33m|\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m                  score = \u001b[1m<\u001b[0m\u001b[1;95mfunction\u001b[0m\u001b[39m fact_comparator_scorer.<locals>.score at \u001b[0m                 \u001b[33m|\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m                          \u001b[94m0x0000016F778377E0\u001b[0m\u001b[1m>\u001b[0m                                                 \u001b[33m|\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m                  state = \u001b[1m<\u001b[0m\u001b[1;95minspect_ai.solver._solver.TaskState\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F76024510\u001b[0m\u001b[1m>\u001b[0m  \u001b[33m|\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m|\u001b[0m                 target = \u001b[1m<\u001b[0m\u001b[1;95minspect_ai.scorer._scorer.Target\u001b[0m\u001b[39m object at \u001b[0m\u001b[94m0x0000016F7785CCD0\u001b[0m\u001b[1m>\u001b[0m     \u001b[33m|\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m|\u001b[0m \u001b[33m+----------------------------------------------------------------------------------------------+\u001b[0m \u001b[31m|\u001b[0m\n\u001b[31m+--------------------------------------------------------------------------------------------------+\u001b[0m\n\u001b[1;91mAttributeError: \u001b[0m\u001b[32m'function'\u001b[0m object has no attribute \u001b[32m'value'\u001b[0m\n"
+  },
+  "logging": []
+}

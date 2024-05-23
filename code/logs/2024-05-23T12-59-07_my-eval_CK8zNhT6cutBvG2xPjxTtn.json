@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "status": "success",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "CK8zNhT6cutBvG2xPjxTtn",
+    "run_id": "DA2bNqFy4W9gB7mXqCczFT",
+    "created": "2024-05-23T12:59:07",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "ea8ea48"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "results": {
+    "scorer": {
+      "name": "fact_comparator_scorer",
+      "params": {
+        "model": "openai/gpt-4"
+      }
+    },
+    "metrics": {
+      "groundedness": {
+        "name": "groundedness",
+        "value": 0.39499036700589,
+        "options": {}
+      },
+      "thoroughness": {
+        "name": "thoroughness",
+        "value": 0.7034744984168466,
+        "options": {}
+      }
+    }
+  },
+  "stats": {
+    "started_at": "2024-05-23T12:59:07",
+    "completed_at": "2024-05-23T12:59:10",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 58,
+        "output_tokens": 184,
+        "total_tokens": 242
+      }
+    }
+  },
+  "samples": [
+    {
+      "id": "sample_1",
+      "epoch": 1,
+      "input": "The fox is brown. The dog is white.",
+      "target": "The fox is brown.",
+      "messages": [
+        {
+          "content": "You are an AI assistant helping with fact comparison.",
+          "role": "system"
+        },
+        {
+          "content": "The fox is brown. The dog is white.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "You have provided two statements regarding the colors of two animals:\n\n1. \"The fox is brown.\"\n2. \"The dog is white.\"\n\nThese statements describe different attributes (color) of two different animals (fox and dog). Here are the key points in comparison:\n\n- The fox has the color brown.\n- The dog has the color white.\n\nIf you need more detailed information or analysis about these animals, please let me know!",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4o-2024-05-13",
+        "choices": [
+          {
+            "message": {
+              "content": "You have provided two statements regarding the colors of two animals:\n\n1. \"The fox is brown.\"\n2. \"The dog is white.\"\n\nThese statements describe different attributes (color) of two different animals (fox and dog). Here are the key points in comparison:\n\n- The fox has the color brown.\n- The dog has the color white.\n\nIf you need more detailed information or analysis about these animals, please let me know!",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 31,
+          "output_tokens": 86,
+          "total_tokens": 117
+        }
+      },
+      "score": {
+        "value": "g0.7274239813979315:t0.5594406561696326",
+        "answer": "You have provided two statements regarding the colors of two animals:\n\n1. \"The fox is brown.\"\n2. \"The dog is white.\"\n\nThese statements describe different attributes (color) of two different animals (fox and dog). Here are the key points in comparison:\n\n- The fox has the color brown.\n- The dog has the color white.\n\nIf you need more detailed information or analysis about these animals, please let me know!",
+        "explanation": "Dummy explanation",
+        "metadata": {
+          "thoroughness": 0.5594406561696326,
+          "groundedness": 0.7274239813979315
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "id": "sample_2",
+      "epoch": 1,
+      "input": "The cat is a bird.",
+      "target": "The cat is furry.",
+      "messages": [
+        {
+          "content": "You are an AI assistant helping with fact comparison.",
+          "role": "system"
+        },
+        {
+          "content": "The cat is a bird.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "That statement is incorrect. \n\nA cat is a mammal, specifically a small domesticated carnivorous species known for its independence and companionship to humans. It belongs to the species *Felis catus*. \n\nA bird, on the other hand, is a member of the class Aves, characterized by feathers, beaks, and usually the capability of flight (although some birds, like ostriches and penguins, cannot fly). \n\nSo, a cat is not a bird.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4o-2024-05-13",
+        "choices": [
+          {
+            "message": {
+              "content": "That statement is incorrect. \n\nA cat is a mammal, specifically a small domesticated carnivorous species known for its independence and companionship to humans. It belongs to the species *Felis catus*. \n\nA bird, on the other hand, is a member of the class Aves, characterized by feathers, beaks, and usually the capability of flight (although some birds, like ostriches and penguins, cannot fly). \n\nSo, a cat is not a bird.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 27,
+          "output_tokens": 98,
+          "total_tokens": 125
+        }
+      },
+      "score": {
+        "value": "g0.06255675261384852:t0.8475083406640606",
+        "answer": "That statement is incorrect. \n\nA cat is a mammal, specifically a small domesticated carnivorous species known for its independence and companionship to humans. It belongs to the species *Felis catus*. \n\nA bird, on the other hand, is a member of the class Aves, characterized by feathers, beaks, and usually the capability of flight (although some birds, like ostriches and penguins, cannot fly). \n\nSo, a cat is not a bird.",
+        "explanation": "Dummy explanation",
+        "metadata": {
+          "thoroughness": 0.8475083406640606,
+          "groundedness": 0.06255675261384852
+        }
+      },
+      "metadata": {}
+    }
+  ],
+  "logging": []
+}
