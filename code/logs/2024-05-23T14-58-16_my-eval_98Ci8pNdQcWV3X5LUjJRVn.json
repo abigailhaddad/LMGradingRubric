@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "status": "success",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "98Ci8pNdQcWV3X5LUjJRVn",
+    "run_id": "WD9rtE2zPrtS68rGMEeNKt",
+    "created": "2024-05-23T14:58:16",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "5daa7f4"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "results": {
+    "scorer": {
+      "name": "fact_comparator_scorer",
+      "params": {
+        "model": "openai/gpt-4"
+      }
+    },
+    "metrics": {
+      "groundedness": {
+        "name": "groundedness",
+        "value": 25.0,
+        "options": {}
+      },
+      "thoroughness": {
+        "name": "thoroughness",
+        "value": 25.0,
+        "options": {}
+      }
+    }
+  },
+  "stats": {
+    "started_at": "2024-05-23T14:58:16",
+    "completed_at": "2024-05-23T14:58:22",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 1303,
+        "output_tokens": 364,
+        "total_tokens": 1667
+      }
+    }
+  },
+  "samples": [
+    {
+      "id": "sample_1",
+      "epoch": 1,
+      "input": "The fox is brown. The dog is white.",
+      "target": "The fox is brown. The dog is blue",
+      "messages": [
+        {
+          "content": "You are an AI assistant helping with fact comparison.",
+          "role": "system"
+        },
+        {
+          "content": "The fox is brown. The dog is white.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "You've provided two statements about the colors of a fox and a dog:\n\n1. \"The fox is brown.\"\n2. \"The dog is white.\"\n\nBoth statements describe different animals and their respective colors. The fox is described as brown, and the dog is described as white. There's no immediate conflict between these two facts since they pertain to different subjects.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4o-2024-05-13",
+        "choices": [
+          {
+            "message": {
+              "content": "You've provided two statements about the colors of a fox and a dog:\n\n1. \"The fox is brown.\"\n2. \"The dog is white.\"\n\nBoth statements describe different animals and their respective colors. The fox is described as brown, and the dog is described as white. There's no immediate conflict between these two facts since they pertain to different subjects.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 31,
+          "output_tokens": 71,
+          "total_tokens": 102
+        }
+      },
+      "score": {
+        "value": "g50.0:t50.0",
+        "answer": "You've provided two statements about the colors of a fox and a dog:\n\n1. \"The fox is brown.\"\n2. \"The dog is white.\"\n\nBoth statements describe different animals and their respective colors. The fox is described as brown, and the dog is described as white. There's no immediate conflict between these two facts since they pertain to different subjects.",
+        "explanation": "{'context_list': '<facts>\\n1. The fox is brown.\\n2. The dog is white.\\n</facts>', 'answer_list': '<facts>\\n1. The fox is brown.\\n2. The dog is blue.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=['The fox is brown.'], facts_only_in_answer=['The dog is blue.'], facts_only_in_context=['The dog is white.'])}\nModel Output: The fox is brown. The dog is white.",
+        "metadata": {
+          "thoroughness": 50.0,
+          "groundedness": 50.0,
+          "stuff": "{'context_list': '<facts>\\n1. The fox is brown.\\n2. The dog is white.\\n</facts>', 'answer_list': '<facts>\\n1. The fox is brown.\\n2. The dog is blue.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=['The fox is brown.'], facts_only_in_answer=['The dog is blue.'], facts_only_in_context=['The dog is white.'])}\nModel Output: The fox is brown. The dog is white."
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "id": "sample_2",
+      "epoch": 1,
+      "input": "The cat is a bird.",
+      "target": "The cat is furry.",
+      "messages": [
+        {
+          "content": "You are an AI assistant helping with fact comparison.",
+          "role": "system"
+        },
+        {
+          "content": "The cat is a bird.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The statement \"The cat is a bird\" is factually incorrect. \n\nA cat is a small domesticated carnivorous mammal with scientific name Felis catus. Cats are known for their agility, hunting skills, and behavior such as purring and kneading. They belong to the animal family Felidae.\n\nA bird, on the other hand, is a member of the class Aves, characterized by feathers, a beak without teeth, and (in most species) the ability to fly. Birds lay eggs and have a high metabolic rate.\n\nTherefore, cats and birds are distinctly different types of animals.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4o-2024-05-13",
+        "choices": [
+          {
+            "message": {
+              "content": "The statement \"The cat is a bird\" is factually incorrect. \n\nA cat is a small domesticated carnivorous mammal with scientific name Felis catus. Cats are known for their agility, hunting skills, and behavior such as purring and kneading. They belong to the animal family Felidae.\n\nA bird, on the other hand, is a member of the class Aves, characterized by feathers, a beak without teeth, and (in most species) the ability to fly. Birds lay eggs and have a high metabolic rate.\n\nTherefore, cats and birds are distinctly different types of animals.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 27,
+          "output_tokens": 124,
+          "total_tokens": 151
+        }
+      },
+      "score": {
+        "value": "g0.0:t0.0",
+        "answer": "The statement \"The cat is a bird\" is factually incorrect. \n\nA cat is a small domesticated carnivorous mammal with scientific name Felis catus. Cats are known for their agility, hunting skills, and behavior such as purring and kneading. They belong to the animal family Felidae.\n\nA bird, on the other hand, is a member of the class Aves, characterized by feathers, a beak without teeth, and (in most species) the ability to fly. Birds lay eggs and have a high metabolic rate.\n\nTherefore, cats and birds are distinctly different types of animals.",
+        "explanation": "{'context_list': '<facts>\\n1. The cat is a bird.\\n</facts>', 'answer_list': '<facts>\\n1. The cat is furry.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=[], facts_only_in_answer=['The cat is furry.'], facts_only_in_context=['The cat is a bird.'])}\nModel Output: The cat is a bird.",
+        "metadata": {
+          "thoroughness": 0.0,
+          "groundedness": 0.0,
+          "stuff": "{'context_list': '<facts>\\n1. The cat is a bird.\\n</facts>', 'answer_list': '<facts>\\n1. The cat is furry.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=[], facts_only_in_answer=['The cat is furry.'], facts_only_in_context=['The cat is a bird.'])}\nModel Output: The cat is a bird."
+        }
+      },
+      "metadata": {}
+    }
+  ],
+  "logging": []
+}
