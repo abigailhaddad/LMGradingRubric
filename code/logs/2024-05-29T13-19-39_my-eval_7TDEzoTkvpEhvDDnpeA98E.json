@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "status": "success",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "7TDEzoTkvpEhvDDnpeA98E",
+    "run_id": "4udJ8UghqjRZ8Ba6VTLrJb",
+    "created": "2024-05-29T13:19:39",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "9286cf9"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "results": {
+    "scorer": {
+      "name": "fact_comparator_scorer",
+      "params": {
+        "model": "openai/gpt-4"
+      }
+    },
+    "metrics": {
+      "groundedness": {
+        "name": "groundedness",
+        "value": 0.0,
+        "options": {}
+      },
+      "thoroughness": {
+        "name": "thoroughness",
+        "value": 0.0,
+        "options": {}
+      }
+    }
+  },
+  "stats": {
+    "started_at": "2024-05-29T13:19:39",
+    "completed_at": "2024-05-29T13:19:45",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 773,
+        "output_tokens": 156,
+        "total_tokens": 929
+      }
+    }
+  },
+  "samples": [
+    {
+      "id": "case1",
+      "epoch": 1,
+      "input": "How old is the sun? The sun is 4 billion years old.",
+      "target": "The sun is approximately 4.6 billion years old. It's a mid-sized star.",
+      "messages": [
+        {
+          "content": "You are an AI assistant helping with fact comparison.",
+          "role": "system"
+        },
+        {
+          "content": "How old is the sun? The sun is 4 billion years old.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The statement that the sun is 4 billion years old is incorrect. The sun is approximately 4.6 billion years old. This age is estimated based on models of stellar evolution and the ages of the oldest meteorites found in the solar system.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4o-2024-05-13",
+        "choices": [
+          {
+            "message": {
+              "content": "The statement that the sun is 4 billion years old is incorrect. The sun is approximately 4.6 billion years old. This age is estimated based on models of stellar evolution and the ages of the oldest meteorites found in the solar system.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 36,
+          "output_tokens": 50,
+          "total_tokens": 86
+        }
+      },
+      "score": {
+        "value": "G:0.0 : T:0.0",
+        "answer": "The statement that the sun is 4 billion years old is incorrect. The sun is approximately 4.6 billion years old. This age is estimated based on models of stellar evolution and the ages of the oldest meteorites found in the solar system.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 0.0,
+          "groundedness": 0.0,
+          "stuff": "{'context_list': '<facts>\\nThe sun is 4 billion years old.\\n</facts>', 'answer_list': '<facts>\\nThe sun is approximately 4.6 billion years old.\\nThe sun is a mid-sized star.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=[], facts_only_in_answer=['The sun is approximately 4.6 billion years old.', 'The sun is a mid-sized star.'], facts_only_in_context=['The sun is 4 billion years old.'])}\nModel Output: How old is the sun? The sun is 4 billion years old."
+        }
+      },
+      "metadata": {}
+    }
+  ],
+  "logging": []
+}
