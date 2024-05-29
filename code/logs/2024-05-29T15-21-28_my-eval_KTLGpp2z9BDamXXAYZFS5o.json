@@ -1,0 +1,330 @@
+{
+  "version": 1,
+  "status": "success",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "KTLGpp2z9BDamXXAYZFS5o",
+    "run_id": "B96yRNsoJXoces7mQ3NAJB",
+    "created": "2024-05-29T15:21:28",
+    "dataset": {},
+    "model": "openai/gpt-4",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "c9c6997"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "Please answer the question being asked."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "results": {
+    "scorer": {
+      "name": "fact_comparator_scorer",
+      "params": {
+        "model": "openai/gpt-4"
+      }
+    },
+    "metrics": {
+      "groundedness": {
+        "name": "groundedness",
+        "value": 78.33333333333333,
+        "options": {}
+      },
+      "thoroughness": {
+        "name": "thoroughness",
+        "value": 73.15789473684211,
+        "options": {}
+      }
+    }
+  },
+  "stats": {
+    "started_at": "2024-05-29T15:21:28",
+    "completed_at": "2024-05-29T15:22:24",
+    "model_usage": {
+      "openai/gpt-4": {
+        "input_tokens": 4502,
+        "output_tokens": 1556,
+        "total_tokens": 6058
+      }
+    }
+  },
+  "samples": [
+    {
+      "id": "case1",
+      "epoch": 1,
+      "input": "How old is the sun?",
+      "target": "The sun is approximately 4.6 billion years old. It's a mid-sized star.",
+      "messages": [
+        {
+          "content": "Please answer the question being asked.",
+          "role": "system"
+        },
+        {
+          "content": "How old is the sun?",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The sun is about 4.6 billion years old.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4-0613",
+        "choices": [
+          {
+            "message": {
+              "content": "The sun is about 4.6 billion years old.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 24,
+          "output_tokens": 12,
+          "total_tokens": 36
+        }
+      },
+      "score": {
+        "value": "G:50.0 : T:100.0",
+        "answer": "The sun is about 4.6 billion years old.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 100.0,
+          "groundedness": 50.0,
+          "stuff": "{'context_list': '<facts>\\nThe sun is about 4.6 billion years old.\\n</facts>', 'answer_list': '<facts>\\n[\"The sun is approximately 4.6 billion years old.\", \\n\"The sun is a mid-sized star.\"]\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=['The sun is about 4.6 billion years old.'], facts_only_in_answer=['The sun is a mid-sized star.'], facts_only_in_context=[])}\nModel Output: The sun is about 4.6 billion years old."
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "id": "case2",
+      "epoch": 1,
+      "input": "What is the capital of France?",
+      "target": "The capital of France is Paris.",
+      "messages": [
+        {
+          "content": "Please answer the question being asked.",
+          "role": "system"
+        },
+        {
+          "content": "What is the capital of France?",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The capital of France is Paris.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4-0613",
+        "choices": [
+          {
+            "message": {
+              "content": "The capital of France is Paris.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 25,
+          "output_tokens": 7,
+          "total_tokens": 32
+        }
+      },
+      "score": {
+        "value": "G:100.0 : T:100.0",
+        "answer": "The capital of France is Paris.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 100.0,
+          "groundedness": 100.0,
+          "stuff": "{'context_list': '<facts>\\nThe capital of France is Paris.\\n</facts>', 'answer_list': \"<facts>\\n['The capital of France is Paris.']\\n</facts>\", 'comparison_result': ComparisonResult(facts_in_both=['The capital of France is Paris.'], facts_only_in_answer=[], facts_only_in_context=[])}\nModel Output: The capital of France is Paris."
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "id": "case3",
+      "epoch": 1,
+      "input": "Explain the theory of relativity.",
+      "target": "The theory of relativity, developed by Albert Einstein, includes the special and general theories. Special relativity introduces a consistent explanation for the speed of light, and general relativity provides a description of gravity as a curvature of spacetime caused by mass.",
+      "messages": [
+        {
+          "content": "Please answer the question being asked.",
+          "role": "system"
+        },
+        {
+          "content": "Explain the theory of relativity.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The theory of relativity, proposed by Albert Einstein, is a physical theory describing how the laws of physics work in both gravitational and non-gravitational situations, particularly for high speeds and strong gravity. It is usually split into two parts: \n\n1. Special relativity: Published in 1905, it postulates that physical laws are the same in all inertial frames and that the speed of light is the same for all observers, regardless of their movement or the source's movement. This leads to time dilation and length contraction, meaning time can 'slow down' and distances can 'shrink' for fast-moving objects.\n\n2. General relativity: Published in 1915, it extends special relativity to include gravity, describing it as a curvature of spacetime caused by mass and energy. This theory can correctly describe the bending of light around massive objects, the precession of the perihelion of Mercury and the expansion of the universe. \n\nEinstein's theory of relativity has been confirmed by many experiments and observations and is a cornerstone in our understanding of the physical universe.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4-0613",
+        "choices": [
+          {
+            "message": {
+              "content": "The theory of relativity, proposed by Albert Einstein, is a physical theory describing how the laws of physics work in both gravitational and non-gravitational situations, particularly for high speeds and strong gravity. It is usually split into two parts: \n\n1. Special relativity: Published in 1905, it postulates that physical laws are the same in all inertial frames and that the speed of light is the same for all observers, regardless of their movement or the source's movement. This leads to time dilation and length contraction, meaning time can 'slow down' and distances can 'shrink' for fast-moving objects.\n\n2. General relativity: Published in 1915, it extends special relativity to include gravity, describing it as a curvature of spacetime caused by mass and energy. This theory can correctly describe the bending of light around massive objects, the precession of the perihelion of Mercury and the expansion of the universe. \n\nEinstein's theory of relativity has been confirmed by many experiments and observations and is a cornerstone in our understanding of the physical universe.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 26,
+          "output_tokens": 220,
+          "total_tokens": 246
+        }
+      },
+      "score": {
+        "value": "G:75.0 : T:15.789473684210526",
+        "answer": "The theory of relativity, proposed by Albert Einstein, is a physical theory describing how the laws of physics work in both gravitational and non-gravitational situations, particularly for high speeds and strong gravity. It is usually split into two parts: \n\n1. Special relativity: Published in 1905, it postulates that physical laws are the same in all inertial frames and that the speed of light is the same for all observers, regardless of their movement or the source's movement. This leads to time dilation and length contraction, meaning time can 'slow down' and distances can 'shrink' for fast-moving objects.\n\n2. General relativity: Published in 1915, it extends special relativity to include gravity, describing it as a curvature of spacetime caused by mass and energy. This theory can correctly describe the bending of light around massive objects, the precession of the perihelion of Mercury and the expansion of the universe. \n\nEinstein's theory of relativity has been confirmed by many experiments and observations and is a cornerstone in our understanding of the physical universe.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 15.789473684210526,
+          "groundedness": 75.0,
+          "stuff": "{'context_list': \"<facts>\\n- The theory of relativity was proposed by Albert Einstein.\\n- The theory of relativity is a physical theory describing how the laws of physics work in both gravitational and non-gravitational situations.\\n- The theory of relativity is particularly applicable for high speeds and strong gravity.\\n- The theory of relativity is usually split into two parts: Special relativity and General relativity.\\n- Special relativity was published in 1905.\\n- Special relativity postulates that physical laws are the same in all inertial frames.\\n- The speed of light is the same for all observers, according to Special Relativity.\\n- The speed of light is unaffected by the movement of observers or the source's movement according to Special Relativity.\\n- Special relativity leads to time dilation and length contraction.\\n- Time can 'slow down' for fast-moving objects as per the theory of special relativity.\\n- Distances can 'shrink' for fast-moving objects according to special relativity.\\n- General relativity was published in 1915.\\n- General relativity extends special relativity to include gravity.\\n- General relativity describes gravity as a curvature of spacetime caused by mass and energy.\\n- General relativity can accurately describe the bending of light around massive objects.\\n- General relativity can describe the precession of the perihelion of Mercury.\\n- General relativity can describe the expansion of the universe.\\n- Einstein's theory of relativity has been confirmed by many experiments and observations.\\n- Einstein's theory of relativity is a cornerstone in our understanding of the physical universe.\\n</facts>\", 'answer_list': '<facts>\\n- The theory of relativity was developed by Albert Einstein.\\n- The theory of relativity includes the special and general theories.\\n- Special relativity introduces a consistent explanation for the speed of light.\\n- General relativity provides a description of gravity.\\n- Gravity is described as a curvature of spacetime caused by mass in general relativity.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=['The theory of relativity was proposed by Albert Einstein.', 'The theory of relativity is usually split into two parts: Special relativity and General relativity.', 'General relativity describes gravity as a curvature of spacetime caused by mass and energy.'], facts_only_in_answer=['Special relativity introduces a consistent explanation for the speed of light.'], facts_only_in_context=['The theory of relativity is a physical theory describing how the laws of physics work in both gravitational and non-gravitational situations.', 'The theory of relativity is particularly applicable for high speeds and strong gravity.', 'Special relativity was published in 1905.', 'Special relativity postulates that physical laws are the same in all inertial frames.', 'The speed of light is the same for all observers, according to Special Relativity.', \"The speed of light is unaffected by the movement of observers or the source's movement according to Special Relativity.\", 'Special relativity leads to time dilation and length contraction.', \"Time can 'slow down' for fast-moving objects as per the theory of special relativity.\", \"Distances can 'shrink' for fast-moving objects according to special relativity.\", 'General relativity was published in 1915.', 'General relativity extends special relativity to include gravity.', 'General relativity can accurately describe the bending of light around massive objects.', 'General relativity can describe the precession of the perihelion of Mercury.', 'General relativity can describe the expansion of the universe.', \"Einstein's theory of relativity has been confirmed by many experiments and observations.\", \"Einstein's theory of relativity is a cornerstone in our understanding of the physical universe.\"])}\nModel Output: The theory of relativity, proposed by Albert Einstein, is a physical theory describing how the laws of physics work in both gravitational and non-gravitational situations, particularly for high speeds and strong gravity. It is usually split into two parts: \n\n1. Special relativity: Published in 1905, it postulates that physical laws are the same in all inertial frames and that the speed of light is the same for all observers, regardless of their movement or the source's movement. This leads to time dilation and length contraction, meaning time can 'slow down' and distances can 'shrink' for fast-moving objects.\n\n2. General relativity: Published in 1915, it extends special relativity to include gravity, describing it as a curvature of spacetime caused by mass and energy. This theory can correctly describe the bending of light around massive objects, the precession of the perihelion of Mercury and the expansion of the universe. \n\nEinstein's theory of relativity has been confirmed by many experiments and observations and is a cornerstone in our understanding of the physical universe."
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "id": "case4",
+      "epoch": 1,
+      "input": "What is photosynthesis?",
+      "target": "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. It typically involves the green pigment chlorophyll and generates oxygen as a byproduct.",
+      "messages": [
+        {
+          "content": "Please answer the question being asked.",
+          "role": "system"
+        },
+        {
+          "content": "What is photosynthesis?",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Photosynthesis is a process used by plants, algae and certain bacteria to convert sunlight, water and carbon dioxide into food while releasing oxygen as a by-product. It is an essential part of the carbon cycle and understanding it is vital to understanding life on earth.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4-0613",
+        "choices": [
+          {
+            "message": {
+              "content": "Photosynthesis is a process used by plants, algae and certain bacteria to convert sunlight, water and carbon dioxide into food while releasing oxygen as a by-product. It is an essential part of the carbon cycle and understanding it is vital to understanding life on earth.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 23,
+          "output_tokens": 51,
+          "total_tokens": 74
+        }
+      },
+      "score": {
+        "value": "G:66.66666666666666 : T:50.0",
+        "answer": "Photosynthesis is a process used by plants, algae and certain bacteria to convert sunlight, water and carbon dioxide into food while releasing oxygen as a by-product. It is an essential part of the carbon cycle and understanding it is vital to understanding life on earth.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 50.0,
+          "groundedness": 66.66666666666666,
+          "stuff": "{'context_list': '<facts>\\n- Photosynthesis is a process used by plants, algae and certain bacteria to convert sunlight, water and carbon dioxide into food.\\n- Photosynthesis releases oxygen as a by-product.\\n- Photosynthesis is an essential part of the carbon cycle.\\n- Understanding photosynthesis is vital to understanding life on earth.\\n</facts>', 'answer_list': '<facts>\\n- Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water.\\n- Photosynthesis typically involves the green pigment chlorophyll.\\n- Photosynthesis generates oxygen as a byproduct.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=['Photosynthesis is a process used by plants, algae and certain bacteria to convert sunlight, water and carbon dioxide into food.', 'Photosynthesis releases oxygen as a by-product.'], facts_only_in_answer=['Photosynthesis typically involves the green pigment chlorophyll.'], facts_only_in_context=['Photosynthesis is an essential part of the carbon cycle.', 'Understanding photosynthesis is vital to understanding life on earth.'])}\nModel Output: Photosynthesis is a process used by plants, algae and certain bacteria to convert sunlight, water and carbon dioxide into food while releasing oxygen as a by-product. It is an essential part of the carbon cycle and understanding it is vital to understanding life on earth."
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "id": "case5",
+      "epoch": 1,
+      "input": "Who wrote 'Pride and Prejudice'?",
+      "target": "'Pride and Prejudice' was written by Jane Austen.",
+      "messages": [
+        {
+          "content": "Please answer the question being asked.",
+          "role": "system"
+        },
+        {
+          "content": "Who wrote 'Pride and Prejudice'?",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "Jane Austen wrote 'Pride and Prejudice'.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4-0613",
+        "choices": [
+          {
+            "message": {
+              "content": "Jane Austen wrote 'Pride and Prejudice'.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 28,
+          "output_tokens": 12,
+          "total_tokens": 40
+        }
+      },
+      "score": {
+        "value": "G:100.0 : T:100.0",
+        "answer": "Jane Austen wrote 'Pride and Prejudice'.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 100.0,
+          "groundedness": 100.0,
+          "stuff": "{'context_list': \"<facts>\\nJane Austen wrote 'Pride and Prejudice'.\\n</facts>\", 'answer_list': '<facts>\\n[\"\\'Pride and Prejudice\\' was written by Jane Austen.\"]\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=[\"Jane Austen wrote 'Pride and Prejudice'.\"], facts_only_in_answer=[], facts_only_in_context=[])}\nModel Output: Jane Austen wrote 'Pride and Prejudice'."
+        }
+      },
+      "metadata": {}
+    }
+  ],
+  "logging": []
+}

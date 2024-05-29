@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "status": "success",
+  "eval": {
+    "task": "my_eval",
+    "task_version": 0,
+    "task_id": "4GpPPSSkx8yc4a3HSBfBNs",
+    "run_id": "fNbEnpFrgNQHbEJRoreusU",
+    "created": "2024-05-29T14:57:31",
+    "dataset": {},
+    "model": "openai/gpt-4o",
+    "task_attribs": {},
+    "task_args": {},
+    "model_args": {},
+    "config": {},
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/abigailhaddad/LMGradingRubric.git",
+      "commit": "c9c6997"
+    },
+    "packages": {
+      "inspect_ai": "0.3.4.dev1+g6cfb4fe"
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "system_message",
+        "params": {
+          "message": "You are an AI assistant helping with fact comparison."
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {}
+      }
+    ],
+    "config": {}
+  },
+  "results": {
+    "scorer": {
+      "name": "fact_comparator_scorer",
+      "params": {
+        "model": "openai/gpt-4"
+      }
+    },
+    "metrics": {
+      "groundedness": {
+        "name": "groundedness",
+        "value": 50.0,
+        "options": {}
+      },
+      "thoroughness": {
+        "name": "thoroughness",
+        "value": 20.0,
+        "options": {}
+      }
+    }
+  },
+  "stats": {
+    "started_at": "2024-05-29T14:57:31",
+    "completed_at": "2024-05-29T14:57:39",
+    "model_usage": {
+      "openai/gpt-4o": {
+        "input_tokens": 834,
+        "output_tokens": 232,
+        "total_tokens": 1066
+      }
+    }
+  },
+  "samples": [
+    {
+      "id": "case1",
+      "epoch": 1,
+      "input": "How old is the sun?",
+      "target": "The sun is approximately 4.6 billion years old. It's a mid-sized star.",
+      "messages": [
+        {
+          "content": "You are an AI assistant helping with fact comparison.",
+          "role": "system"
+        },
+        {
+          "content": "How old is the sun?",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "content": "The Sun is approximately 4.6 billion years old. This estimation is based on the ages of the oldest meteorites and the Earth's formation, inferred through radiometric age dating and other scientific analyses.",
+          "source": "generate",
+          "role": "assistant"
+        }
+      ],
+      "output": {
+        "model": "gpt-4o-2024-05-13",
+        "choices": [
+          {
+            "message": {
+              "content": "The Sun is approximately 4.6 billion years old. This estimation is based on the ages of the oldest meteorites and the Earth's formation, inferred through radiometric age dating and other scientific analyses.",
+              "source": "generate",
+              "role": "assistant"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "usage": {
+          "input_tokens": 27,
+          "output_tokens": 40,
+          "total_tokens": 67
+        }
+      },
+      "score": {
+        "value": "G:50.0 : T:20.0",
+        "answer": "The Sun is approximately 4.6 billion years old. This estimation is based on the ages of the oldest meteorites and the Earth's formation, inferred through radiometric age dating and other scientific analyses.",
+        "explanation": "nothing",
+        "metadata": {
+          "thoroughness": 20.0,
+          "groundedness": 50.0,
+          "stuff": "{'context_list': \"<facts>\\nThe Sun is approximately 4.6 billion years old.\\nThis estimation is based on the ages of the oldest meteorites.\\nThis estimation is based on the Earth's formation.\\nThe estimation is inferred through radiometric age dating.\\nThe estimation is also inferred through other scientific analyses.\\n</facts>\", 'answer_list': '<facts>\\nThe sun is approximately 4.6 billion years old.\\nThe sun is a mid-sized star.\\n</facts>', 'comparison_result': ComparisonResult(facts_in_both=['The Sun is approximately 4.6 billion years old.'], facts_only_in_answer=['The sun is a mid-sized star.'], facts_only_in_context=['This estimation is based on the ages of the oldest meteorites.', \"This estimation is based on the Earth's formation.\", 'The estimation is inferred through radiometric age dating.', 'The estimation is also inferred through other scientific analyses.'])}\nModel Output: The Sun is approximately 4.6 billion years old. This estimation is based on the ages of the oldest meteorites and the Earth's formation, inferred through radiometric age dating and other scientific analyses."
+        }
+      },
+      "metadata": {}
+    }
+  ],
+  "logging": []
+}
