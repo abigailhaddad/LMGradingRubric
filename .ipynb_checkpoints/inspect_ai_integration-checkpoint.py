@@ -13,9 +13,7 @@ import asyncio
 from inspect_ai.dataset import Sample
 from typing import Dict, Tuple
 from ast import literal_eval
-from langchain_core.messages import HumanMessage
-from code_from_inspect_ai import InspectChatModel
-from inspect_ai.dataset import Sample
+
 
 
 class FactComparator:
@@ -188,6 +186,10 @@ def compare_metrics(cases: Dict[str, Dict[str, Tuple[str, str, Dict[str, float],
         })
 
     df = pd.DataFrame(data)
+    df = df.replace({r'^\[.*\]$': '', r'^\{.*\}$': ''}, regex=True)
+    df['Facts in Both'] = df['Facts in Both'].apply(literal_eval)
+    df['Facts Only in Answer'] = df['Facts Only in Answer'].apply(literal_eval)
+    df['Facts Only in Context'] = df['Facts Only in Context'].apply(literal_eval)
     return df
 
 
@@ -274,20 +276,8 @@ def fact_comparator_scorer(model) -> Scorer:
 
   return score
 
-def sample_sample():
-    samples = [
-    Sample(
-        input="How old is the sun?",
-        target="The sun is approximately 4.6 billion years old. It's a mid-sized star.",
-        description="Very basic question.",
-        id="case1"
-    )]
-    return(samples)
-
 @task
-def my_eval():
-    samples = sample_sample()
-    SYSTEM_MESSAGE = "Please answer the question being asked."
+def fact_comparer_eval():
     return Task(
         dataset=samples,
         plan=[
@@ -296,4 +286,3 @@ def my_eval():
         ],
         scorer=fact_comparator_scorer(model=get_model()),
     )
-
